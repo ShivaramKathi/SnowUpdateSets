@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_624989_sn_git.dummytest</api_name>
+        <caller_access/>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>dummytest</name>
+        <script><![CDATA[var dummytest = Class.create();
+dummytest.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+   getAllUpdatesForUpdateSet: function(updateSetSysId) {
+        var updateSetXML = '';
+        var updateXML = new GlideRecord('sys_update_xml');
+        updateXML.addQuery('update_set', updateSetSysId);
+        updateXML.query();
+        gs.info("XML Converted?");
+        while (updateXML.next()) {
+            // Concatenate the XML content of each update
+            updateSetXML += updateXML.getValue('payload');
+            gs.info("XML found");
+           // gs.log("XML File " + updateSetXML);
+        } if( !updateXML){  
+            gs.error("No XML content found for update set: " + updateSetSysId);
+        }
+        return updateSetXML;
+    },
+	
+	createOrUpdateFile: function(repoOwner, repoName, branchName, commitMessage, content, accessToken) {
+    // Ensure special characters in the file path are properly encoded
+    var filePath = 'ShivaramKathi/ServiceNow-UptdaetSets'; // Replace with the actual file path in your repository
+    var encodedFilePath = encodeURIComponent(filePath);
+
+    // Construct the GitHub API URL with the properly encoded file path
+    var githubApiUrl = "https://github.com/" + repoOwner + "/" + repoName + "/contents/" + encodedFilePath;    // var githubApiUrl = "https://github.com/" + repoOwner + "/" + repoName + "/contents/" + fileName;
+
+    // Set other request parameters
+    accessToken = "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"; // Replace with the actual access token
+    var requestBody = {
+        message: commitMessage,
+        content: GlideStringUtil.base64Encode(content), // Content needs to be base64 encoded
+        branch: branchName
+    };
+
+    var headers = {
+        "Authorization": "Bearer " + accessToken,
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+    };
+
+    // Make the GitHub API request
+    var response = this.sendGitHubRequest("PUT", githubApiUrl, JSON.stringify(requestBody), headers);
+    return response;
+},
+    type: 'dummytest'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-02-15 11:26:14</sys_created_on>
+        <sys_id>3a19ed3a47540610a4a3a464116d43c8</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>dummytest</sys_name>
+        <sys_package display_value="SN-GIT" source="x_624989_sn_git">8779d9b647140610a4a3a464116d43ca</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="SN-GIT">8779d9b647140610a4a3a464116d43ca</sys_scope>
+        <sys_update_name>sys_script_include_3a19ed3a47540610a4a3a464116d43c8</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-02-15 11:26:14</sys_updated_on>
+    </sys_script_include>
+</record_update>
