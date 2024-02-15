@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sys_export_definition">
     <sys_export_definition action="INSERT_OR_UPDATE">
-        <field_list>installed_from,sys_created_by,base_update_set,application,name,sys_created_on,parent,state</field_list>
+        <field_list>installed_from,sys_created_by,base_update_set,application,name,sys_created_on,parent,state,sys_updated_on,sys_updated_by</field_list>
         <filter table="sys_update_set">state=complete^EQ<item display_value="Complete" endquery="false" field="state" goto="false" newquery="false" operator="=" or="false" value="complete"/>
             <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
         </filter>
@@ -9,14 +9,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2024-02-15 10:53:21</sys_created_on>
         <sys_id>a6816dfe47140610a4a3a464116d430b</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>3</sys_mod_count>
         <sys_name>sn_git</sys_name>
         <sys_package display_value="SN-GIT" source="x_624989_sn_git">8779d9b647140610a4a3a464116d43ca</sys_package>
         <sys_policy/>
         <sys_scope display_value="SN-GIT">8779d9b647140610a4a3a464116d43ca</sys_scope>
         <sys_update_name>sys_export_definition_a6816dfe47140610a4a3a464116d430b</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2024-02-15 10:53:21</sys_updated_on>
+        <sys_updated_on>2024-02-15 11:19:00</sys_updated_on>
         <table_name>sys_update_set</table_name>
         <view display_value="Exp_da6816dfe47140610a4a3a464116d430b" name="exp_da6816dfe47140610a4a3a464116d430b">16a1edfe47140610a4a3a464116d4395</view>
     </sys_export_definition>
